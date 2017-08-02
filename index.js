@@ -20,7 +20,7 @@ else {
         ws: true, // Proxy websockets too
         router: {
             // Anything to /api goes to our backend
-            'localhost:8080/api': 'http://localhost:3001'
+            'lhttps://immense-forest-22325.herokuapp.com/api': 'http://localhost:3001'
         }
     }));
     app.listen(process.env.PORT || 8080);

@@ -6,13 +6,15 @@ const express = require('express');
 const app = express();
 
 // API endpoints go here!
-app.get('/api/test', (req, res) => {
-    res.json({message: 'hello'})
-})
+
 
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+app.get('/api/test', (req, res) => {
+    res.json({message: 'hello'})
+})
 
 // Unhandled requests which aren't for the API should serve index.html so
 // client-side routing using browserHistory can function
