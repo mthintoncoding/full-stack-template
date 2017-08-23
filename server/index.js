@@ -3,22 +3,97 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const {Client} = require('./clientmodel');
+const {User} = require('./usermodel');
+const {BasicStrategy} = require('passport-http');
 
 mongoose.Promise = global.Promise;
 
 const app = express();
+
+const basicStrategy = new BasicStrategy((username, password, callback) => {
+  let user;
+  User
+    .findOne({username: username})
+    .exec()
+    .then(_user => {
+      user = _user;
+      if (!user) {
+        return callback(null, false, {message: 'Incorrect username'});
+      }
+      return user.validatePassword(password);
+    })
+    .then(isValid => {
+      if (!isValid) {
+        return callback(null, false, {message: 'Incorrect password'});
+      }
+      else {
+        return callback(null, user)
+      }
+    })
+    .catch(err => console.log('Invalid username or password'))
+});
+
+app.use(require('express-session') ({
+  secret: 'alley cat',
+  resave: false,
+  saveUnitialized: false
+}));
 
 // API endpoints go here!
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
+passport.use(basicStrategy);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use(passport.session());
 
-app.post('/api/login', (req, res) => {
-    return Client
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+
+function loggedIn(req, res, next) {
+	if (req.user) {
+		next();
+	} else {
+		res.json({redirect: '/login', message: 'Please sign in'});
+	}
+}
+
+app.get('/api/login',
+    passport.authenticate('basic'), (req, res) => {
+      res.json({user: req.user.apiRepr()}) ;
+    })
+
+app.get('/api/me', loggedIn, (req, res, next) => {
+  res.json({user: req.user});
+});
+
+app.get('/api/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if(err){
+      res.json({err})
+    }
+    else{
+      console.log(req.user)
+      res.json({ loggedOut: true})
+    }
+  })
+})
+
+app.post('/api/createaccount', (req, res) => {
+    console.log(req.body)
+    let {username, password, email} = req.body;
+
+    return User
     .find({username})
     .count()
     .exec()
@@ -29,31 +104,24 @@ app.post('/api/login', (req, res) => {
                 message: 'username already taken'
             });
         }
-        return Client.hashPassword(password);
+        return User.hashPassword(password);
     })
     .then(hash => {
-        return Client
+        return User
             .create({
                 username: username,
                 password: hash,
-                email: email
+                email: email,
+                role: email === "mthinton@gmail.com" ? "admin" : "client"
             })
     })
-    .then(client => {
-        return res.status(201).json(client);
+    .then(user => {
+        return res.status(201).json(user.apiRepr());
     })
     .catch(err => {
         res.status(500).json({message: 'Internal server error'})
     });
 });
-
-app.get('/api/login', (req, res) => {
-    return Client
-    .find()
-    .exec()
-    .then(users => res.json(users))
-    .catch(err => console.log(err) && res.status(500).json({message: 'Internal server error'}));
-})
 
 // Unhandled requests which aren't for the API should serve index.html so
 // client-side routing using browserHistory can function
@@ -65,11 +133,10 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
 let server;
 function runServer(port=3001) {
     return new Promise((resolve, reject) => {
-        mongoose.connect('mongodb://Barber:1234Europe!@ds157631.mlab.com:57631/barbershopclients', err => {
+        mongoose.connect('mongodb://Matthew:barbershop@ds157631.mlab.com:57631/barbershopclients', err => {
             if(err){
                 return reject(err);
             }
-
             server = app.listen(port, () => {
             resolve();
             })

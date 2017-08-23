@@ -24,12 +24,14 @@
     "bcrypt": "^1.0.2",
     "cross-env": "^3.1.4",
     "express": "^4.14.1",
+    "express-session": "^1.15.5",
     "http-proxy-middleware": "^0.17.3",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.11.5",
     "npm-run-all": "^4.0.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "react-router": "^3.0.5",
     "xp": "^1.0.1"
   }
 }
