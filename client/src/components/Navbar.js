@@ -36,7 +36,4 @@ const Navbar = (props) => (
   </div>
 )
 
-const mapStateToProps = (state, props) => {
-
-};
-export default connect(mapStateToProps)(Navbar)
+export default connect()(Navbar)

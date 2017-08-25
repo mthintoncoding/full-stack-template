@@ -10,6 +10,14 @@ const clientManager = (state = initialState, action) => {
 				...state,
 				user: action.user,
 				isLoggedIn: true
+			};
+			break;
+
+			case 'LOGOUT_STATE':
+				return{
+				...state,
+				user: {},
+				isLoggedIn: false
 			}
 
 		default:

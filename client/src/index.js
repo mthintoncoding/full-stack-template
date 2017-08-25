@@ -10,7 +10,7 @@ import News from './components/News'
 import Services from './components/Services'
 import Contact from './components/Contact'
 import './index.css';
-import {Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import store from './store'
 

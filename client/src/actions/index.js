@@ -7,6 +7,10 @@ export const updateState = (user) => ({
 	user
 })
 
+export const LOGOUT_STATE = 'LOGOUT_STATE';
+export const logoutState = () => ({
+	type: LOGOUT_STATE,
+})
 
 export const registerNewUser = (username, password, email) => {
 	return (dispatch) => {
@@ -49,6 +53,7 @@ export const logoutUser = () => {
 			type: 'GET',
 			url: 'http://localhost:8080/api/logout',
 			success:  function(response) {
+				dispatch(logoutState())
 				browserHistory.push('/')
 				console.log(response)
 			}
