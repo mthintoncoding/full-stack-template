@@ -28,12 +28,20 @@ const Navbar = (props) => (
       <p>Contact</p>
     </Link>
 
+    {props.loggedIn ?
   <Link to='#' onClick={(event) => props.dispatch(logoutUser())}>
     <p>Logout</p>
   </Link>
+: ''}
   </div>
     {props.children}
   </div>
 )
 
-export default connect()(Navbar)
+const mapStateToProps = (state, props) => {
+  return {
+    loggedIn: state.clientManager.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(Navbar)

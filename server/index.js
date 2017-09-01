@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const {User} = require('./usermodel');
+const {Calendar} = require('./calendarModel')
 const {BasicStrategy} = require('passport-http');
 
 mongoose.Promise = global.Promise;
