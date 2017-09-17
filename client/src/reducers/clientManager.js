@@ -1,6 +1,7 @@
 const initialState = {
 	isLoggedIn: false,
-	user: {}
+	user: {},
+	users: []
 }
 
 const clientManager = (state = initialState, action) => {
@@ -18,7 +19,14 @@ const clientManager = (state = initialState, action) => {
 				...state,
 				user: {},
 				isLoggedIn: false
-			}
+			};
+				break;
+
+			case 'RETRIEVED_USERS':
+				return {
+					...state,
+						users: action.users
+				}
 
 		default:
 			return state

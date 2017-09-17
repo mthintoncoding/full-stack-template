@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import BigCalendar from './calendar'
 import UserView from './UserView'
-import '../../../node_modules/react-big-calendar/lib/css/react-big-calendar.css'
+import {retrieveUsers} from '../actions'
+import events from '../events'
 
 class UserGreeting extends React.Component {
 
@@ -11,7 +12,9 @@ class UserGreeting extends React.Component {
       <div>
         <h1>Hello, {this.props.username} </h1>
         {this.props.role === 'admin' ?
-         <button>View Users</button> :
+         <button onClick={(e) => {
+              this.props.dispatch(retrieveUsers())
+            }} >View Users</button> :
          <p>Unauthorized Page </p>
         }
         <BigCalendar/>

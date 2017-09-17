@@ -25,6 +25,23 @@ export const registerNewUser = (username, password, email) => {
 	}
 }
 
+const retrievedUsers = (users) => ({
+	type: 'RETRIEVED_USERS',
+	users
+})
+
+export const retrieveUsers = () => {
+	return (dispatch) => {
+		$.ajax({
+			type: 'GET',
+			url: "http://localhost:8080/api/retrieveUsers",
+			success: function(res) {
+				dispatch(retrievedUsers(res.users))
+			}
+		})
+	}
+}
+
 export const loginNewUser = (username, password) => {
 	return (dispatch) => {
 		var settings = {
@@ -41,7 +58,7 @@ export const loginNewUser = (username, password) => {
 				browserHistory.push('/usergreeting')
 			}
 			else {
-				alert("No dice!")
+				alert("Unauthorized User!")
 			}
 		})
 	}

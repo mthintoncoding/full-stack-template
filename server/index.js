@@ -90,10 +90,24 @@ app.get('/api/logout', (req, res) => {
   })
 })
 
+app.get('/api/retrieveUsers', (req, res) => {
+  return User
+  .find({})
+  .exec()
+  .then((users) => {
+    res.json({users: users.map((user) => {
+      return user.apiRepr()
+    })})
+  })
+})
+
+app.post('/api/makeAppointment', (req, res) => {
+  res.send('Hello, everybody!')
+})
+
 app.post('/api/createaccount', (req, res) => {
     console.log(req.body)
     let {username, password, email} = req.body;
-
     return User
     .find({username})
     .count()

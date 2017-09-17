@@ -1,6 +1,7 @@
 import React from 'react';
 import {loginNewUser} from '../actions'
 import {logoutUser} from '../actions'
+import RegistrationPage from './RegistrationPage'
 import { connect } from 'react-redux'
 
 class Login extends React.Component {
@@ -27,6 +28,7 @@ class Login extends React.Component {
 			</form>
 				<button type="submit" onClick={(event) => this.props.dispatch(logoutUser())}>Logout</button>
 			<p>Don't have an account, set one up here</p>
+			<RegistrationPage/>
 			</div>
 		)
 	}
