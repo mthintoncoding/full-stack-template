@@ -101,8 +101,32 @@ app.get('/api/retrieveUsers', (req, res) => {
   })
 })
 
+app.get('/api/retrieveAppointments', (req, res) => {
+  return Calendar
+  .find({})
+  .exec()
+  .then((appointments) => {
+    res.json(appointments)
+  })
+})
+
 app.post('/api/makeAppointment', (req, res) => {
-  res.send('Hello, everybody!')
+  let {start, end} = req.body;
+  let record = new Calendar()
+  record.start = start
+  record.end = end
+  record.save( (err) => {
+    if(err){
+      res.send(res)
+    }
+    Calendar
+    .find({}, (err, appointments) => {
+      if(err){
+        res.send(err)
+      }
+      res.json(appointments)
+    })
+  })
 })
 
 app.post('/api/createaccount', (req, res) => {

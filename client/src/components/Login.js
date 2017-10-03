@@ -8,7 +8,8 @@ class Login extends React.Component {
 
 	render() {
 		return(
-			<div>
+			<div className='loginContainer'>
+			<div className='loginForm'>
 		<form onSubmit={(event) => {
 			event.preventDefault()
 
@@ -29,6 +30,7 @@ class Login extends React.Component {
 				<button type="submit" onClick={(event) => this.props.dispatch(logoutUser())}>Logout</button>
 			<p>Don't have an account, set one up here</p>
 			<RegistrationPage/>
+			</div>
 			</div>
 		)
 	}

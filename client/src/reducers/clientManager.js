@@ -26,7 +26,8 @@ const clientManager = (state = initialState, action) => {
 				return {
 					...state,
 						users: action.users
-				}
+				};
+				break;
 
 		default:
 			return state

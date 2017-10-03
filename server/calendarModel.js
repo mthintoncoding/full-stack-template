@@ -1,11 +1,8 @@
 const mongoose = require('mongoose')
 
 const CalendarSchema = mongoose.Schema({
-  startTime: String,
-  endTime: String,
-  date: String,
-  firstName: String,
-  lastName: String
+  start: Object,
+  end: Object
 })
 
 const Calendar = mongoose.model('Calendar', CalendarSchema)

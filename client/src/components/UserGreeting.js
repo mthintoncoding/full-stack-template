@@ -4,8 +4,13 @@ import BigCalendar from './calendar'
 import UserView from './UserView'
 import {retrieveUsers} from '../actions'
 import events from '../events'
+import {retrieveAppointments} from '../actions'
 
 class UserGreeting extends React.Component {
+
+  componentDidMount(){
+    this.props.dispatch(retrieveAppointments())
+  }
 
   render () {
     return (

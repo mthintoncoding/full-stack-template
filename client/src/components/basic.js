@@ -11,7 +11,7 @@ let Basic = React.createClass({
         {...this.props}
         events={events}
         views={allViews}
-        defaultDate={new Date(2017, 3, 1)}
+        defaultDate={new Date(2017)}
       />
     )
   }

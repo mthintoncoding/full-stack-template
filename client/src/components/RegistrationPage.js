@@ -24,7 +24,8 @@ render(){
 				<input type="text" name="password" />
 				<br></br>
 				<label>email</label>
-				<input type="email" name="email" />
+				<input className="email" type="email" name="email" />
+				<br></br>
 				<button type="submit">Submit</button>
 			</form>
 		</div>

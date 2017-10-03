@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-image:url('https://img0.etsystatic.com/220/1/11982046/il_570xN.1229125038_57y4.jpg');
+  border-radius: 0  100% 100% / 15%;
 }
 
 .App-logo {
@@ -25,11 +27,51 @@ text-align: center;
 .Navbar p {
   display: inline-block;
   padding: 5px;
-  border: right 1px solid black
+  text-decoration: underline;
+  color: black
 }
 
-.Navbar a {
-  color: blue
+.LandingPageText {
+  color: black;
+  background-color: white;
+  font-family: 'Muli', sans-serif;
+}
+
+.box {
+  margin-top: 50px;
+  height: 400px;
+  width: 400px;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.barberLogo {
+  height:400px;
+  width: 400px;
+}
+
+.LoginButton {
+  background-color: grey;
+  color: white;
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+
+.loginContainer {
+padding-top: 50px;
+padding-bottom: 50px;
+margin: 50px;
+text-align: center;
+font-family: 'Muli', sans-serif;
+border: 1px solid black;
+position: relative;
+}
+
+.loginContainer loginForm {
+  margin: 0;
+  position: absolute;
+  top: 50%
 }
 
 @keyframes App-logo-spin {
