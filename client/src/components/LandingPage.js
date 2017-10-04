@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+
 class LandingPage extends React.Component{
 
 	render() {
@@ -35,7 +36,3 @@ const mapStateToProps = (state, props) => {
 	}
 }
 export default connect(mapStateToProps)(LandingPage)
-
-//Client ID d28e632cb0a74d63a544cc45805d6d24
-
-//Client Secret 6f57bec7e4124ec5a470369affbbeaf7

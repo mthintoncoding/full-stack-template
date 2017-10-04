@@ -115,6 +115,7 @@ app.post('/api/makeAppointment', (req, res) => {
   let record = new Calendar()
   record.start = start
   record.end = end
+  record.name = req.user.username
   record.save( (err) => {
     if(err){
       res.send(res)

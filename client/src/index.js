@@ -9,7 +9,6 @@ import UserGreeting from './components/UserGreeting'
 import News from './components/News'
 import Services from './components/Services'
 import Contact from './components/Contact'
-import UserView from './components/UserView'
 import './index.css';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
@@ -27,7 +26,6 @@ ReactDOM.render(
 				<Route path='/services' component={Services} />
 				<Route path='/contact' component={Contact} />
 				<Route path='/usergreeting' component={UserGreeting} />
-				<Route path='/userView' component={UserView} />
 			</Route>
   	</Router>
   	</Provider>,

@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import BigCalendar from './calendar'
-import UserView from './UserView'
 import {retrieveUsers} from '../actions'
 import events from '../events'
 import {retrieveAppointments} from '../actions'
+import moment from 'moment'
 
 class UserGreeting extends React.Component {
 

@@ -99,7 +99,8 @@ export const makeNewAppointment = (start, end) => {
 				response.forEach((appointment) => {
 					let obj = {
 						start: new Date(appointment.start),
-						end: new Date(appointment.end)
+						end: new Date(appointment.end),
+						title: appointment.name
 					}
 					appointments.push(obj)
 				})
@@ -119,7 +120,8 @@ export const retrieveAppointments = () => {
 				response.forEach((appointment) => {
 					let obj = {
 						start: new Date(appointment.start),
-						end: new Date(appointment.end)
+						end: new Date(appointment.end),
+						title: appointment.name
 					}
 					appointments.push(obj)
 				})
