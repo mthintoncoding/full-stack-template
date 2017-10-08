@@ -8,31 +8,41 @@ import '../App.css'
 const Navbar = (props) => (
   <div>
   <div className="Navbar">
+    <p className="navbarText"> H. Smith Barber Shop </p>
+    <input type="checkbox" />
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+    <ul className="navMenu" id="menu">
+
     <Link to='/'>
-      <p>Home</p>
+      <li>Home</li>
     </Link>
 
     <Link to='/about'>
-      <p>About</p>
+      <li>About</li>
     </Link>
 
     <Link to='/news'>
-      <p>News</p>
+      <li>News</li>
     </Link>
 
     <Link to='/services'>
-      <p>Services</p>
+      <li>Services</li>
     </Link>
 
     <Link to='/contact'>
-      <p>Contact</p>
+      <li>Contact</li>
     </Link>
 
     {props.loggedIn ?
   <Link to='#' onClick={(event) => props.dispatch(logoutUser())}>
-    <p>Logout</p>
+    <li>Logout</li>
   </Link>
 : ''}
+</ul>
   </div>
     {props.children}
   </div>

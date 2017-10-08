@@ -8,6 +8,7 @@ class Login extends React.Component {
 
 	render() {
 		return(
+			<div>
 			<div className='loginContainer'>
 			<div className='loginForm'>
 		<form onSubmit={(event) => {
@@ -25,13 +26,19 @@ class Login extends React.Component {
 				<label>password</label>
 				<input type="text" name="password" />
 				<br></br>
-				<button type="submit">Login</button>
+				<button type="submit"><strong>Login</strong></button>
 			</form>
-				<button type="submit" onClick={(event) => this.props.dispatch(logoutUser())}>Logout</button>
-			<p>Don't have an account, set one up here</p>
-			<RegistrationPage/>
 			</div>
-			</div>
+		</div>
+		<div className="registrationContainer">
+			<form className="registrationForm">
+		<p>Don't have an account, set one up here</p>
+		<RegistrationPage/>
+		<button type="submit" onClick={(event) => this.props.dispatch(logoutUser())}><strong>Logout</strong></button>
+		</form>
+	</div>
+
+	</div>
 		)
 	}
 }

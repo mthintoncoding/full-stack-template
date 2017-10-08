@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './Navbar.css';
 import LandingPage from './components/LandingPage'
 
 class App extends Component {
