@@ -43,6 +43,7 @@ export const retrieveUsers = () => {
 			type: 'GET',
 			url: "http://localhost:8080/api/retrieveUsers",
 			success: function(res) {
+				alert(res.users)
 				dispatch(retrievedUsers(res.users))
 			}
 		})
