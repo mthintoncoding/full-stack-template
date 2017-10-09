@@ -64,6 +64,7 @@ height: 150px;
   margin: 0;
   position: absolute;
   top: 50%;
+  padding: 25px;
 }
 
 .loginForm {
@@ -71,6 +72,7 @@ height: 150px;
   width: 400px;
   margin-left: auto;
   margin-right: auto;
+  padding: 25px;
 }
 
 .loginForm button {
@@ -109,6 +111,7 @@ height: 150px;
   color: white;
   font-weight: bold;
   border-radius: 5px;
+  margin: 5px;
 }
 
 @keyframes App-logo-spin {
@@ -131,4 +134,10 @@ height: 150px;
   margin-right: auto;
   width: 600px;
   height: 600px;
+}
+
+.viewUsersButton {
+  color: white;
+  background-color: grey;
+  border-radius: 5px;
 }

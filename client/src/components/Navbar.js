@@ -8,7 +8,10 @@ import '../App.css'
 const Navbar = (props) => (
   <div>
   <div className="Navbar">
-    <p className="navbarText"> H. Smith Barber Shop </p>
+    <p className="navbarText"> H. Smith</p>
+    <Link to='/'>
+      <button className='logoutButton' type="submit" onClick={(event) => this.props.dispatch(logoutUser())}><strong>Logout</strong></button>
+    </Link>
     <input type="checkbox" />
 
     <span></span>

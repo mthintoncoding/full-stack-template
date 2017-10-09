@@ -18,6 +18,21 @@ padding-bottom: 10px;
   padding-bottom: 10px;
 }
 
+.Navbar button {
+  background:none!important;
+     color:white;
+     border:none;
+     /*border is optional*/
+     border-bottom:1px solid #444;
+     cursor: pointer;
+}
+
+.logoutButton{
+  margin-left: 1000px;
+  margin-top: 25px;
+  font-size: 15px;
+}
+
 .Navbar input {
   display: block;
   width: 40px;

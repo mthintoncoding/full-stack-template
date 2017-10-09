@@ -34,7 +34,6 @@ class Login extends React.Component {
 			<form className="registrationForm">
 		<p>Don't have an account, set one up here</p>
 		<RegistrationPage/>
-		<button type="submit" onClick={(event) => this.props.dispatch(logoutUser())}><strong>Logout</strong></button>
 		</form>
 	</div>
 

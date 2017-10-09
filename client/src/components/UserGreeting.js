@@ -17,7 +17,7 @@ class UserGreeting extends React.Component {
       <div>
         <h1>Hello, {this.props.username} </h1>
         {this.props.role === 'admin' ?
-         <button onClick={(e) => {
+         <button className="viewUsersButton" onClick={(e) => {
               this.props.dispatch(retrieveUsers())
             }} >View Users</button> :
          <p>Unauthorized Page </p>
